@@ -4,10 +4,11 @@ public class User {
 
     private String username;
     private String password;
+    private TestAppEnv testAppEnv;
 
 
     public User(){
-        this("Bobby Zamora", "james");
+        this("username", "jamesssss");
     }
 
     // This is a constructor, assign default value to the constructor
@@ -36,5 +37,9 @@ public class User {
             throw new IllegalArgumentException("Password must be > 6 chars");
         }
         this.password = password;
+    }
+
+    public String getPermission() {
+        return "Normal";
     }
 }
