@@ -69,7 +69,7 @@ public class UserTest {
     public void canSetPasswordAfterConstructed(){
         User user = new User();
 
-        user.setPassword("PaZZwor6");
+//        user.setPassword("PaZZwor6");
 
         assertEquals("password is reset", "PaZZwor6", user.getPassword());
     }

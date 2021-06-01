@@ -1,5 +1,9 @@
 package com.javafortesters.domainentities;
 
+import com.javafortesters.domainentities.InvalidPassword;
+import org.junit.Test;
+import static  org.junit.Assert.assertEquals;
+
 public class User {
 
     private String username;
@@ -7,7 +11,7 @@ public class User {
     private TestAppEnv testAppEnv;
 
 
-    public User(){
+    public User() {
         this("username", "jamesssss");
     }
 
@@ -16,7 +20,6 @@ public class User {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        setPassword(password);
     }
 
     /**
@@ -32,9 +35,9 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password){
+    public void setPassword(String password) throws InvalidPassword {
         if(password.length() < 7){
-            throw new IllegalArgumentException("Password must be > 6 chars");
+            throw new InvalidPassword("Password must be > 6 chars");
         }
         this.password = password;
     }
