@@ -12,7 +12,7 @@ public class User {
 
 
     public User() {
-        this("username", "jamesssss");
+        this("username", "jamessssS123");
     }
 
     // This is a constructor, assign default value to the constructor
@@ -39,6 +39,12 @@ public class User {
         if(password.length() < 7){
             throw new InvalidPassword("Password must be > 6 chars");
         }
+
+        String mustIncludeADigitOrUppercase = ".*[0123456789A-Z]+.*";
+        if(!password.matches(mustIncludeADigitOrUppercase)) {
+            throw new InvalidPassword("Password must include digit and uppercase letters");
+        }
+
         this.password = password;
     }
 
