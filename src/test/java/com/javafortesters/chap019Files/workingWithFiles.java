@@ -1,10 +1,11 @@
-package com.javafortesters.chap018Files;
+package com.javafortesters.chap019Files;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -220,7 +221,24 @@ public class workingWithFiles {
 
             System.out.println(outputString);
         }
+    }
 
+    @Test
+    public void copyAndMoveFile() throws IOException{
+        File copyThis = writeTheTestDataFile();
+        File toThis = new File(copyThis.getCanonicalPath() + ".copy");
 
+        assertThat(toThis.exists(), is(false));
+        Files.copy(copyThis.toPath(), toThis.toPath());
+
+        assertThat(toThis.exists(), is(true));
+        assertThat(copyThis.length(), is(toThis.length()));
+
+        File moveThis = writeTheTestDataFile();
+        File toThis2 = new File(moveThis.getCanonicalPath() + ".moved");
+        assertThat(toThis2.exists(), is(false));
+
+        Files.move(moveThis.toPath(), toThis2.toPath());
+        assertThat(moveThis.exists(), is(false));
     }
 }

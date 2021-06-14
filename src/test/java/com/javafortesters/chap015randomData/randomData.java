@@ -1,4 +1,4 @@
-package com.javafortesters.chap016randomData;
+package com.javafortesters.chap015randomData;
 
 import java.util.*;
 

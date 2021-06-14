@@ -2,9 +2,16 @@ package com.javafortesters.domainentities;
 
 import com.javafortesters.domainentities.InvalidPassword;
 import org.junit.Test;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+
+import java.util.ArrayList;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
 import static  org.junit.Assert.assertEquals;
 
-public class User {
+public class User implements Comparable {
 
     private String username;
     private String password;
@@ -48,7 +55,27 @@ public class User {
         this.password = password;
     }
 
+    public int compareTo(Object oUser2){
+        User user2 = (User)oUser2;
+
+        if((this.username.compareTo(user2.getUsername())) == 0) {
+            return 0;
+        }
+
+        int user1Length = this.getUsername().length() + this.getPassword().length();
+        int user2Length = user2.getUsername().length() + user2.getPassword().length();
+
+        int val = user1Length - user2Length;
+
+        if(val == 0) {
+            val = this.getUsername().compareTo(user2.getUsername());
+        }
+        return val;
+
+    }
+
     public String getPermission() {
         return "Normal";
     }
+
 }

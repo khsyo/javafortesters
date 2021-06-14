@@ -1,4 +1,4 @@
-package com.javafortesters.chap017randomData;
+package com.javafortesters.chap016datesAndTimes;
 
 import org.junit.Test;
 
